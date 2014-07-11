@@ -45,7 +45,8 @@ class datadog(
   $tags = [],
   $puppet_run_reports = false,
   $puppetmaster_user = 'puppet',
-  $non_local_traffic = false
+  $non_local_traffic = false,
+  $log_level = 'INFO'
 ) inherits datadog::params {
 
   validate_string($dd_url)
@@ -55,7 +56,7 @@ class datadog(
   validate_bool($puppet_run_reports)
   validate_string($puppetmaster_user)
   validate_bool($non_local_traffic)
-
+  validate_string($log_level)
   include datadog::params
 
   case $operatingsystem {
